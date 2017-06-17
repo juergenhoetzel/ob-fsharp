@@ -1,6 +1,6 @@
-* Org Babel F#
+Org Babel F#
 
-** Simple Example
+* Simple Example
 
 #+BEGIN_SRC fsharp :var str="World!" :exports both
 sprintf "Hello %s" str
@@ -11,7 +11,7 @@ sprintf "Hello %s" str
 
 See [[https://raw.githubusercontent.com/juergenhoetzel/ob-fsharp/master/README.org][Source]]
 
-** TODO
+* TODOs
 
-*** TODO handle seq results (like arrays and lists)
-*** TODO Handle =:session= header
+** TODO handle =seq<a'>= results (like arrays and lists)
+** TODO Handle =:session= header
