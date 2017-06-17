@@ -1,8 +1,10 @@
-;;; ob-fsharp.el ---                                 -*- lexical-binding: t; -*-
+;;; ob-fsharp.el --- Org-Babel F# -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017  Jürgen Hötzel
-
 ;; Author: Jürgen Hötzel <juergen@archlinux.org>
+;; Url: https://github.com/juergenhoetzel/ob-fsharp
+;; Version: 0.1
+;; Package-Requires: ((emacs "25") (fsharp-mode "1.9.7"))
 ;; Keywords: literate programming, reproducible research
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -23,10 +25,6 @@
 ;; Org-Babel support for evaluating F# source code.
 
 ;; For now lets only allow evaluation using the F# Interactive.
-
-;;; Requirements:
-
-;; - fsharp-mode :: https://github.com/fsharp/emacs-fsharp-mode
 
 ;;; Code:
 (require 'ob-ocaml)			;Can reuse some OCaml functions
