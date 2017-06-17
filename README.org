@@ -1,5 +1,15 @@
 * Org Babel F#
 
+** Simple Example
+
+#+BEGIN_SRC fsharp :var str="World!" :exports both
+sprintf "Hello %s" str
+#+END_SRC
+
+#+RESULTS:
+: Hello World!
+
 ** TODO
 
 *** TODO handle seq results (like arrays and lists)
+*** TODO Handle =:session= header
