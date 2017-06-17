@@ -9,6 +9,8 @@ sprintf "Hello %s" str
 #+RESULTS:
 : Hello World!
 
+See [[https://raw.githubusercontent.com/juergenhoetzel/ob-fsharp/master/README.org][Source]]
+
 ** TODO
 
 *** TODO handle seq results (like arrays and lists)
