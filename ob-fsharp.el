@@ -1,10 +1,10 @@
 ;;; ob-fsharp.el --- Org-Babel F# -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017  Jürgen Hötzel
+;; Copyright (C) 2017-2022  Jürgen Hötzel
 ;; Author: Jürgen Hötzel <juergen@archlinux.org>
 ;; Url: https://github.com/juergenhoetzel/ob-fsharp
 ;; Version: 0.1
-;; Package-Requires: ((emacs "25") (fsharp-mode "1.9.8"))
+;; Package-Requires: ((emacs "25") (fsharp-mode "1.9.8") (seq "2.22"))
 ;; Keywords: literate programming, reproducible research
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -52,13 +52,9 @@
 		  org-babel-fsharp-eoe-indicator))
 		(comint-send-input)))
 	 (clean
-	  (car (let ((re (regexp-quote org-babel-fsharp-eoe-output)) out)
-		 (delq nil (mapcar (lambda (line)
-				     (if out
-					 (progn (setq out nil) line)
-				       (when (string-match re line)
-					 (progn (setq out t) nil))))
-				   (mapcar #'org-trim (reverse raw)))))))
+	  (nth 1 (seq-drop-while (lambda (line)
+				   (not (string-match (regexp-quote org-babel-fsharp-eoe-output) line)))
+				 (mapcar #'org-trim (reverse raw)))))
 	 (raw (org-trim clean))
 	 (result-params (cdr (assq :result-params params))))
     ;; ob failes to remove body lines, even when using REMOVE-ECHO
