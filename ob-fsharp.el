@@ -61,6 +61,10 @@
 				   (mapcar #'org-trim (reverse raw)))))))
 	 (raw (org-trim clean))
 	 (result-params (cdr (assq :result-params params))))
+    ;; ob failes to remove body lines, even when using REMOVE-ECHO
+    ;; Because output is interleaved wich echoed prompt
+    (when (string-prefix-p body raw)
+      (setq raw (substring raw ( + (length ";;\n") (length body)))))
     (string-match
      "\\(\\(.*\n\\)*\\)[^:\n]+ : \\([^=\n]+\\) =\\(\n\\| \\)\\(.+\\)$"
      raw)
