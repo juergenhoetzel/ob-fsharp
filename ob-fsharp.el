@@ -34,26 +34,26 @@
 
 (defvar org-babel-default-header-args:fsharp '())
 
-(defvar org-babel-fsharp-eoe-indicator "\"org-babel-fsharp-eoe\";;")
-(defvar org-babel-fsharp-eoe-output "org-babel-fsharp-eoe")
+(defvar ob-fsharp-eoe-indicator "\"ob-fsharp-eoe\";;")
+(defvar ob-fsharp-eoe-output "ob-fsharp-eoe")
 
 (defun org-babel-execute:fsharp (body params)
-  "Execute a block of F# code with Babel."
+  "Execute BODY according to PARAMS with Babel."
   (let* ((full-body (org-babel-expand-body:generic
 		     body params
 		     (org-babel-variable-assignments:fsharp params)))
          (session (org-babel-prep-session:fsharp
 		   (cdr (assq :session params)) params))
          (raw (org-babel-comint-with-output
-		  (session org-babel-fsharp-eoe-output nil full-body)
+		  (session ob-fsharp-eoe-output nil full-body)
 		(insert
 		 (concat
 		  (org-babel-chomp full-body) ";;\n"
-		  org-babel-fsharp-eoe-indicator))
+		  ob-fsharp-eoe-indicator))
 		(comint-send-input)))
 	 (clean
 	  (nth 1 (seq-drop-while (lambda (line)
-				   (not (string-match (regexp-quote org-babel-fsharp-eoe-output) line)))
+				   (not (string-match (regexp-quote ob-fsharp-eoe-output) line)))
 				 (mapcar #'org-trim (reverse raw)))))
 	 (raw (org-trim clean))
 	 (result-params (cdr (assq :result-params params))))
@@ -95,7 +95,7 @@
     (get-buffer inferior-fsharp-buffer-name)))
 
 (defun org-babel-variable-assignments:fsharp (params)
-  "Return list of F# statements assigning the block's variables."
+  "Return statements assigning the variables in PARAMS."
   (org-babel-variable-assignments:ocaml params))
 
 (provide 'ob-fsharp)
