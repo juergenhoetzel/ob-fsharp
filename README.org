@@ -1,4 +1,13 @@
-Org Babel F#
+#+TITLE: Org Babel for F#
+
+#+BEGIN_QUOTE
+Babel is Org's ability to execute source code within Org documents.
+
+--- [[https://orgmode.org/worg/org-contrib/babel/][Babel: Active Code in Org]]
+#+END_QUOTE
+
+The goal of this project is to extend the default Org Babel capabilities by
+supporting the F# programming language.
 
 * Simple Example
 
@@ -10,6 +19,20 @@ sprintf "Hello %s" str
 : Hello World!
 
 See [[https://raw.githubusercontent.com/juergenhoetzel/ob-fsharp/master/README.org][Source]]
+
+* Installation
+
+** straight.el + use-package
+
+If you are a user of both [[https://github.com/radian-software/straight.el][straight.el]] and [[https://github.com/jwiegley/use-package][use-package]] you can simply add the
+following code to your setup, after the Org package configuration:
+
+#+BEGIN_SRC elisp :tangle no
+  (use-package ob-fsharp
+    :straight t
+    :config
+    (add-to-list 'org-babel-load-languages '(fsharp . t)))
+#+END_SRC
 
 * TODOs
 
