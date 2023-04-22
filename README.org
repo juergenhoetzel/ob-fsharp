@@ -29,11 +29,7 @@ following code to your setup, after the Org package configuration:
 
 #+BEGIN_SRC elisp :tangle no
   (use-package ob-fsharp
-    :straight (ob-fsharp
-               :type git
-               :host github
-               :repo "juergenhoetzel/ob-fsharp"
-               :branch master)
+    :straight t
     :config
     (add-to-list 'org-babel-load-languages '(fsharp . t)))
 #+END_SRC
